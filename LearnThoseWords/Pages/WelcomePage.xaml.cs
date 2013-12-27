@@ -1,41 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using LearnThoseWords.Infrastructure;
+using LearnThoseWords.ViewModels;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using LearnThoseWords.Resources;
+using System;
 
 namespace LearnThoseWords
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class WelcomePage : PhoneApplicationPage
     {
-        // Constructor
-        public MainPage()
+        private readonly WelcomePageViewModel _welcomePageViewModel;
+
+        public WelcomePage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            _welcomePageViewModel = NinjectContainer.Get<WelcomePageViewModel>();
+            DataContext = _welcomePageViewModel;
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        private void _welcomePageViewModel_MoveForward(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/WordListPage.xaml", UriKind.Relative));
+        }
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+        private void PhoneApplicationPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _welcomePageViewModel.MoveForward += _welcomePageViewModel_MoveForward;
+            _welcomePageViewModel.Initialize();
+        }
     }
 }

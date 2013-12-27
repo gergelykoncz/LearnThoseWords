@@ -14,6 +14,11 @@ namespace LearnThoseWords.BusinessLayer.Facade
             this._repository = repository;
         }
 
+        public Word GetWord(int wordId)
+        {
+            return _repository.GetWordByCriteria(x => x.WordId == wordId);
+        }
+
         public IEnumerable<Word> GetAllWords()
         {
             return _repository.GetAllWords()

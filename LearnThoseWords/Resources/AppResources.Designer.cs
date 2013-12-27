@@ -86,5 +86,77 @@ namespace LearnThoseWords.Resources {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string SaveWordPageCancel {
+            get {
+                return ResourceManager.GetString("SaveWordPageCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find meaning online.
+        /// </summary>
+        public static string SaveWordPageGetMeaningFromGoogle {
+            get {
+                return ResourceManager.GetString("SaveWordPageGetMeaningFromGoogle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveWordPageSave {
+            get {
+                return ResourceManager.GetString("SaveWordPageSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save your word.
+        /// </summary>
+        public static string SaveWordPageTitle {
+            get {
+                return ResourceManager.GetString("SaveWordPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meaning:.
+        /// </summary>
+        public static string SaveWordPageWordMeaning {
+            get {
+                return ResourceManager.GetString("SaveWordPageWordMeaning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Word:.
+        /// </summary>
+        public static string SaveWordPageWordTitle {
+            get {
+                return ResourceManager.GetString("SaveWordPageWordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string WordListPageAddNew {
+            get {
+                return ResourceManager.GetString("WordListPageAddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to your word list.
+        /// </summary>
+        public static string WordListPageTitle {
+            get {
+                return ResourceManager.GetString("WordListPageTitle", resourceCulture);
+            }
+        }
     }
 }

@@ -128,4 +128,28 @@
   <data name="ApplicationTitle" xml:space="preserve">
     <value>Learn those Words!</value>
   </data>
+  <data name="SaveWordPageCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SaveWordPageGetMeaningFromGoogle" xml:space="preserve">
+    <value>Find meaning online</value>
+  </data>
+  <data name="SaveWordPageSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveWordPageTitle" xml:space="preserve">
+    <value>save your word</value>
+  </data>
+  <data name="SaveWordPageWordMeaning" xml:space="preserve">
+    <value>Meaning:</value>
+  </data>
+  <data name="SaveWordPageWordTitle" xml:space="preserve">
+    <value>Word:</value>
+  </data>
+  <data name="WordListPageAddNew" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="WordListPageTitle" xml:space="preserve">
+    <value>your word list</value>
+  </data>
 </root>
