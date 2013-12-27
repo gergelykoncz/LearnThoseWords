@@ -97,6 +97,33 @@ namespace LearnThoseWords.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string SaveWordPageDelete {
+            get {
+                return ResourceManager.GetString("SaveWordPageDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure?.
+        /// </summary>
+        public static string SaveWordPageDeleteCaption {
+            get {
+                return ResourceManager.GetString("SaveWordPageDeleteCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press OK if you really want to delete this word..
+        /// </summary>
+        public static string SaveWordPageDeleteConfirmation {
+            get {
+                return ResourceManager.GetString("SaveWordPageDeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find meaning online.
         /// </summary>
         public static string SaveWordPageGetMeaningFromGoogle {

@@ -95,7 +95,9 @@
     </Compile>
     <Compile Include="BusinessLayer\Facade\IWordFacade.cs" />
     <Compile Include="BusinessLayer\Facade\WordFacade.cs" />
+    <Compile Include="DataAccess\DbCreationHelper.cs" />
     <Compile Include="DataAccess\DbWordRepository.cs" />
+    <Compile Include="DataAccess\IDbCreationHelper.cs" />
     <Compile Include="DataAccess\IWordRepository.cs" />
     <Compile Include="DataAccess\WordDataContext.cs" />
     <Compile Include="Entities\ObservableEntity.cs" />
@@ -154,6 +156,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\cancel.png" />
+    <Content Include="Assets\delete.png" />
     <Content Include="Assets\save.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

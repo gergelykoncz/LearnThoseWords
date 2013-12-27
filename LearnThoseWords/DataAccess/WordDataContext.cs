@@ -5,15 +5,12 @@ namespace LearnThoseWords.DataAccess
 {
     public class WordDataContext : DataContext
     {
-        public static readonly string ConnectionString = "Data Source=isostore:/Words.sdf";
+        private const string ConnectionString = "Data Source=isostore:/LearnThoseWords.sdf";
 
         public WordDataContext()
             : base(ConnectionString)
         {
-            if (this.DatabaseExists() == false)
-            {
-                this.CreateDatabase();
-            }
+            
         }
 
         public Table<Word> Words;

@@ -35,7 +35,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             
-            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.SaveWordPageTitle}"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.SaveWordPageWordTitle}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Title, Mode=TwoWay}"></TextBox>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.SaveWordPageWordMeaning}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Description, Mode=TwoWay}"></TextBox>
         </Grid>
     </Grid>
     

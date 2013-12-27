@@ -152,4 +152,13 @@
   <data name="WordListPageTitle" xml:space="preserve">
     <value>your word list</value>
   </data>
+  <data name="SaveWordPageDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SaveWordPageDeleteCaption" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="SaveWordPageDeleteConfirmation" xml:space="preserve">
+    <value>Press OK if you really want to delete this word.</value>
+  </data>
 </root>

@@ -8,10 +8,19 @@ namespace LearnThoseWords.DataAccess
     public class DbWordRepository : IWordRepository
     {
         private readonly WordDataContext _dataContext;
+        private readonly IDbCreationHelper _dbCreationHelper;
 
-        public DbWordRepository(WordDataContext dataContext)
+        public DbWordRepository(WordDataContext dataContext,
+            IDbCreationHelper dbCreationHelper)
         {
             this._dataContext = dataContext;
+            this._dbCreationHelper = dbCreationHelper;
+
+            if (_dataContext.DatabaseExists() == false)
+            {
+                _dataContext.CreateDatabase();
+                _dbCreationHelper.CreateInitialData(this);
+            }
         }
 
         public IEnumerable<Word> GetAllWords()
@@ -34,6 +43,7 @@ namespace LearnThoseWords.DataAccess
             //New word, it has the default zero ID, store it.
             if (word.WordId == 0)
             {
+                word.DateAdded = DateTime.Now;
                 _dataContext.Words.InsertOnSubmit(word);
                 _dataContext.SubmitChanges();
             }

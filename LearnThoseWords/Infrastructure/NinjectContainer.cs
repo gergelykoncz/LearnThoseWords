@@ -15,7 +15,8 @@ namespace LearnThoseWords.Infrastructure
                 kernel = new StandardKernel();
 
                 kernel.Bind<WordDataContext>().ToSelf().InSingletonScope();
-                kernel.Bind<IWordRepository>().To<DbWordRepository>();
+                kernel.Bind<IDbCreationHelper>().To<DbCreationHelper>().InSingletonScope();
+                kernel.Bind<IWordRepository>().To<DbWordRepository>().InSingletonScope();
                 kernel.Bind<IWordFacade>().To<WordFacade>();
             }
         }

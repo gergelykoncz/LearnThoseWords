@@ -4,6 +4,7 @@ using LearnThoseWords.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace LearnThoseWords.Pages
@@ -19,18 +20,27 @@ namespace LearnThoseWords.Pages
             this._saveWordViewModel = NinjectContainer.Get<SaveWordViewModel>();
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedFrom(e);
-            string wordIdParameter;
-            
-            if (NavigationContext.QueryString.TryGetValue("wordId", out wordIdParameter))
+            if (DataContext == null)
             {
-                int wordId;
-                if (int.TryParse(wordIdParameter, out wordId))
+                base.OnNavigatedFrom(e);
+                string wordIdParameter;
+
+                if (NavigationContext.QueryString.TryGetValue("wordId", out wordIdParameter))
                 {
-                    _saveWordViewModel.Initialize(wordId);
+                    int wordId;
+                    if (int.TryParse(wordIdParameter, out wordId))
+                    {
+                        _saveWordViewModel.Initialize(wordId);
+                    }
                 }
+                else
+                {
+                    _saveWordViewModel.Initialize();
+                }
+
+                DataContext = _saveWordViewModel;
             }
         }
 
@@ -45,16 +55,37 @@ namespace LearnThoseWords.Pages
             saveButton.Text = AppResources.SaveWordPageSave;
             saveButton.Click += saveButton_Click;
             ApplicationBar.Buttons.Add(saveButton);
+
+            var deleteButton = new ApplicationBarIconButton(new Uri("/Assets/Delete.png", UriKind.Relative));
+            deleteButton.Text = AppResources.SaveWordPageSave;
+            deleteButton.Click += deleteButton_Click;
+            ApplicationBar.Buttons.Add(deleteButton);
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _saveWordViewModel.SaveWord();
+            goBack();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            goBack();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(AppResources.SaveWordPageDeleteConfirmation, AppResources.SaveWordPageDeleteCaption, MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                _saveWordViewModel.DeleteWord();
+                goBack();
+            }
+        }
+
+        private void goBack()
+        {
+            NavigationService.Navigate(new Uri("/Pages/WordListPage.xaml", UriKind.Relative));
         }
     }
 }

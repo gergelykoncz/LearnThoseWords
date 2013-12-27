@@ -21,6 +21,9 @@ namespace LearnThoseWords.Tests.Infrastructure
             var otherContext = NinjectContainer.Get<WordDataContext>();
             Assert.AreSame(dbContext, otherContext);
 
+            var dbCreationHelper = NinjectContainer.Get<IDbCreationHelper>();
+            Assert.IsInstanceOfType(dbCreationHelper, typeof(DbCreationHelper));
+
             var dbRepository = NinjectContainer.Get<IWordRepository>();
             Assert.IsInstanceOfType(dbRepository, typeof(DbWordRepository));
 

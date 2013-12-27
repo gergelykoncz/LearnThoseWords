@@ -31,9 +31,24 @@ namespace LearnThoseWords.ViewModels
             this._wordFacade = wordFacade;
         }
 
+        public override void Initialize()
+        {
+            Word = new Word();
+        }
+
         public void Initialize(int wordId)
         {
             Word = _wordFacade.GetWord(wordId);
+        }
+
+        public void SaveWord()
+        {
+            _wordFacade.SaveWord(Word);
+        }
+
+        public void DeleteWord()
+        {
+            _wordFacade.DeleteWord(Word);
         }
     }
 }
