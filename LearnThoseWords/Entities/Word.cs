@@ -1,7 +1,9 @@
-﻿using System.Data.Linq.Mapping;
+﻿using System;
+using System.Data.Linq.Mapping;
 
 namespace LearnThoseWords.Entities
 {
+    [Table]
     public class Word : ObservableEntity
     {
         private int _wordId;
@@ -60,6 +62,26 @@ namespace LearnThoseWords.Entities
                     NotifyPropertyChanging("Description");
                     _description = value;
                     NotifyPropertyChanged("Description");
+                }
+            }
+        }
+
+        private DateTime _dateAdded;
+
+        [Column]
+        public DateTime DateAdded
+        {
+            get
+            {
+                return _dateAdded;
+            }
+            set
+            {
+                if (_dateAdded != value)
+                {
+                    NotifyPropertyChanging("DateAdded");
+                    _dateAdded = value;
+                    NotifyPropertyChanged("DateAdded");
                 }
             }
         }

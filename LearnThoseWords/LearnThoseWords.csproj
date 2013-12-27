@@ -93,6 +93,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BusinessLayer\Facade\IWordFacade.cs" />
+    <Compile Include="BusinessLayer\Facade\WordFacade.cs" />
     <Compile Include="DataAccess\DbWordRepository.cs" />
     <Compile Include="DataAccess\IWordRepository.cs" />
     <Compile Include="DataAccess\WordDataContext.cs" />

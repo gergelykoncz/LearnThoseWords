@@ -1,4 +1,5 @@
-﻿using LearnThoseWords.DataAccess;
+﻿using LearnThoseWords.BusinessLayer.Facade;
+using LearnThoseWords.DataAccess;
 using Ninject;
 
 namespace LearnThoseWords.Infrastructure
@@ -15,6 +16,7 @@ namespace LearnThoseWords.Infrastructure
 
                 kernel.Bind<WordDataContext>().ToSelf().InSingletonScope();
                 kernel.Bind<IWordRepository>().To<DbWordRepository>();
+                kernel.Bind<IWordFacade>().To<WordFacade>();
             }
         }
 
