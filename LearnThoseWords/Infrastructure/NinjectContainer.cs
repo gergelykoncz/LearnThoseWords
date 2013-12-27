@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using LearnThoseWords.DataAccess;
+using Ninject;
 
 namespace LearnThoseWords.Infrastructure
 {
@@ -12,6 +13,8 @@ namespace LearnThoseWords.Infrastructure
             {
                 kernel = new StandardKernel();
 
+                kernel.Bind<WordDataContext>().ToSelf().InSingletonScope();
+                kernel.Bind<IWordRepository>().To<DbWordRepository>();
             }
         }
 
