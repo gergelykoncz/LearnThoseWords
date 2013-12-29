@@ -1,6 +1,8 @@
-﻿using LearnThoseWords.BusinessLayer.Facade;
+﻿using LearnThoseWords.BusinessLayer.Repository;
 using LearnThoseWords.DataAccess;
 using LearnThoseWords.Infrastructure;
+using LearnThoseWords.Shared.Facade;
+using LearnThoseWords.Shared.Repository;
 using LearnThoseWords.ViewModels;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
@@ -32,6 +34,7 @@ namespace LearnThoseWords.Tests.Infrastructure
 
             var wordListViewModel = NinjectContainer.Get<WordListViewModel>();
             Assert.IsInstanceOfType(wordListViewModel, typeof(WordListViewModel));
+
         }
     }
 }

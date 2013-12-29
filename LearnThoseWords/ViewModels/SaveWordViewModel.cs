@@ -1,14 +1,18 @@
-﻿using LearnThoseWords.BusinessLayer.Facade;
-using LearnThoseWords.Entities;
+﻿using LearnThoseWords.Entities;
+using LearnThoseWords.Resources;
+using LearnThoseWords.Shared.Entities;
+using LearnThoseWords.Shared.Facade;
+using System.Windows;
 
 namespace LearnThoseWords.ViewModels
 {
     public class SaveWordViewModel : ViewModelBase
     {
         private readonly IWordFacade _wordFacade;
+        private readonly IWordDefinitionFacade _wordDefinitionFacade;
 
-        private Word _word;
-        public Word Word
+        private IWord _word;
+        public IWord Word
         {
             get
             {
@@ -25,10 +29,29 @@ namespace LearnThoseWords.ViewModels
             }
         }
 
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                if (_isBusy != value)
+                {
+                    NotifyPropertyChanging("IsBusy");
+                    _isBusy = value;
+                    NotifyPropertyChanged("IsBusy");
+                }
+            }
+        }
 
-        public SaveWordViewModel(IWordFacade wordFacade)
+        public SaveWordViewModel(IWordFacade wordFacade,
+            IWordDefinitionFacade wordDefinitionFacade)
         {
             this._wordFacade = wordFacade;
+            this._wordDefinitionFacade = wordDefinitionFacade;
         }
 
         public override void Initialize()
@@ -49,6 +72,26 @@ namespace LearnThoseWords.ViewModels
         public void DeleteWord()
         {
             _wordFacade.DeleteWord(Word);
+        }
+
+        public async void GetDefinition()
+        {
+            if (string.IsNullOrWhiteSpace(Word.Title) == false)
+            {
+                try
+                {
+                    IsBusy = true;
+                    Word.Definition = await _wordDefinitionFacade.GetDefinition(Word.Title);
+                }
+                catch
+                {
+                    MessageBox.Show(AppResources.SaveWordPageWordnikConnectionErrorMessage, AppResources.SaveWordPageWordnikConnectionErrorCaption, MessageBoxButton.OK);
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+            }
         }
     }
 }

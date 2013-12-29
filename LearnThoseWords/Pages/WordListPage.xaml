@@ -27,7 +27,7 @@
         <phone:LongListSelector Grid.Row="1" ItemsSource="{Binding WordList}" Tap="LongListSelector_Tap">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Title}"></TextBlock>
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource PhoneTextExtraLargeStyle}"></TextBlock>
                 </DataTemplate>
             </phone:LongListSelector.ItemTemplate>
         </phone:LongListSelector>

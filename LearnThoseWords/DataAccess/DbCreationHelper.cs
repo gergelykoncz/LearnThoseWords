@@ -1,4 +1,5 @@
 ﻿using LearnThoseWords.Entities;
+using LearnThoseWords.Shared.Repository;
 
 namespace LearnThoseWords.DataAccess
 {
@@ -11,7 +12,7 @@ namespace LearnThoseWords.DataAccess
         public void CreateInitialData(IWordRepository wordRepository)
         {
             var word = new Word();
-            word.Description = "Hello world word";
+            word.Definition = "Hello world word";
             word.Title = "Hello";
 
             wordRepository.SaveWord(word);

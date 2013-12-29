@@ -93,15 +93,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BusinessLayer\Facade\IWordFacade.cs" />
-    <Compile Include="BusinessLayer\Facade\WordFacade.cs" />
     <Compile Include="DataAccess\DbCreationHelper.cs" />
-    <Compile Include="DataAccess\DbWordRepository.cs" />
+    <Compile Include="BusinessLayer\Repository\DbWordRepository.cs" />
     <Compile Include="DataAccess\IDbCreationHelper.cs" />
-    <Compile Include="DataAccess\IWordRepository.cs" />
     <Compile Include="DataAccess\WordDataContext.cs" />
     <Compile Include="Entities\ObservableEntity.cs" />
     <Compile Include="Entities\Word.cs" />
+    <Compile Include="Helpers\NegateValueConverter.cs" />
     <Compile Include="Infrastructure\NinjectContainer.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Pages\SaveWordPage.xaml.cs">
@@ -109,6 +107,9 @@
     </Compile>
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WordDeckPage.xaml.cs">
+      <DependentUpon>WordDeckPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WordListPage.xaml.cs">
       <DependentUpon>WordListPage.xaml</DependentUpon>
@@ -122,6 +123,7 @@
     <Compile Include="ViewModels\SaveWordViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
+    <Compile Include="ViewModels\WordDeckViewModel.cs" />
     <Compile Include="ViewModels\WordListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WordDeckPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,9 +187,27 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\sl4-windowsphone71\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LearnThoseWords.Shared\LearnThoseWords.Shared.csproj">
+      <Project>{588D03EA-8AF0-4EE8-9461-0EF9F9C30A0E}</Project>
+      <Name>LearnThoseWords.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
@@ -195,4 +219,9 @@
   </Target>
   -->
   <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>

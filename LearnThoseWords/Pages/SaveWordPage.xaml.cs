@@ -82,6 +82,11 @@ namespace LearnThoseWords.Pages
                 goBack();
             }
         }
+        
+        private void webButton_Click(object sender, RoutedEventArgs e)
+        {
+            _saveWordViewModel.GetDefinition();
+        }
 
         private void goBack()
         {

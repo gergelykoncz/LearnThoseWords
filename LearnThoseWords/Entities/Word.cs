@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LearnThoseWords.Shared.Entities;
+using System;
 using System.Data.Linq.Mapping;
 
 namespace LearnThoseWords.Entities
 {
     [Table]
-    public class Word : ObservableEntity
+    public class Word : ObservableEntity, IWord
     {
         private int _wordId;
 
@@ -46,22 +47,22 @@ namespace LearnThoseWords.Entities
             }
         }
 
-        private string _description;
+        private string _definition;
 
         [Column]
-        public string Description
+        public string Definition
         {
             get
             {
-                return _description;
+                return _definition;
             }
             set
             {
-                if (_description != value)
+                if (_definition != value)
                 {
-                    NotifyPropertyChanging("Description");
-                    _description = value;
-                    NotifyPropertyChanged("Description");
+                    NotifyPropertyChanging("Definition");
+                    _definition = value;
+                    NotifyPropertyChanged("Definition");
                 }
             }
         }

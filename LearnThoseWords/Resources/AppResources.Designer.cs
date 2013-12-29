@@ -124,7 +124,7 @@ namespace LearnThoseWords.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find meaning online.
+        ///   Looks up a localized string similar to Find definition online.
         /// </summary>
         public static string SaveWordPageGetMeaningFromGoogle {
             get {
@@ -151,11 +151,29 @@ namespace LearnThoseWords.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meaning:.
+        ///   Looks up a localized string similar to Definition:.
         /// </summary>
         public static string SaveWordPageWordMeaning {
             get {
                 return ResourceManager.GetString("SaveWordPageWordMeaning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred.
+        /// </summary>
+        public static string SaveWordPageWordnikConnectionErrorCaption {
+            get {
+                return ResourceManager.GetString("SaveWordPageWordnikConnectionErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We don&apos;t seem to be able to connect to Wordnik&apos;s servers for definition. Please try again later..
+        /// </summary>
+        public static string SaveWordPageWordnikConnectionErrorMessage {
+            get {
+                return ResourceManager.GetString("SaveWordPageWordnikConnectionErrorMessage", resourceCulture);
             }
         }
         

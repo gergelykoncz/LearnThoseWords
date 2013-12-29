@@ -1,5 +1,7 @@
-﻿using LearnThoseWords.BusinessLayer.Facade;
+﻿using LearnThoseWords.BusinessLayer.Repository;
 using LearnThoseWords.DataAccess;
+using LearnThoseWords.Shared.Facade;
+using LearnThoseWords.Shared.Repository;
 using Ninject;
 
 namespace LearnThoseWords.Infrastructure
@@ -18,6 +20,7 @@ namespace LearnThoseWords.Infrastructure
                 kernel.Bind<IDbCreationHelper>().To<DbCreationHelper>().InSingletonScope();
                 kernel.Bind<IWordRepository>().To<DbWordRepository>().InSingletonScope();
                 kernel.Bind<IWordFacade>().To<WordFacade>();
+                kernel.Bind<IWordDefinitionFacade>().To<WodnikDefinitionFacade>();
             }
         }
 
@@ -31,6 +34,7 @@ namespace LearnThoseWords.Infrastructure
             if (kernel != null)
             {
                 kernel.Dispose();
+                kernel = null;
             }
         }
     }

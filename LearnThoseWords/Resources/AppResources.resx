@@ -132,7 +132,7 @@
     <value>Cancel</value>
   </data>
   <data name="SaveWordPageGetMeaningFromGoogle" xml:space="preserve">
-    <value>Find meaning online</value>
+    <value>Find definition online</value>
   </data>
   <data name="SaveWordPageSave" xml:space="preserve">
     <value>Save</value>
@@ -141,7 +141,7 @@
     <value>save your word</value>
   </data>
   <data name="SaveWordPageWordMeaning" xml:space="preserve">
-    <value>Meaning:</value>
+    <value>Definition:</value>
   </data>
   <data name="SaveWordPageWordTitle" xml:space="preserve">
     <value>Word:</value>
@@ -160,5 +160,11 @@
   </data>
   <data name="SaveWordPageDeleteConfirmation" xml:space="preserve">
     <value>Press OK if you really want to delete this word.</value>
+  </data>
+  <data name="SaveWordPageWordnikConnectionErrorCaption" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
+  <data name="SaveWordPageWordnikConnectionErrorMessage" xml:space="preserve">
+    <value>We don't seem to be able to connect to Wordnik's servers for definition. Please try again later.</value>
   </data>
 </root>

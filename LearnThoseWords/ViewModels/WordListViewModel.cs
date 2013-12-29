@@ -1,5 +1,5 @@
-﻿using LearnThoseWords.BusinessLayer.Facade;
-using LearnThoseWords.Entities;
+﻿using LearnThoseWords.Shared.Entities;
+using LearnThoseWords.Shared.Facade;
 using System.Collections.ObjectModel;
 
 namespace LearnThoseWords.ViewModels
@@ -13,8 +13,8 @@ namespace LearnThoseWords.ViewModels
             this._wordFacade = wordFacade;
         }
 
-        private ObservableCollection<Word> _wordList;
-        public ObservableCollection<Word> WordList
+        private ObservableCollection<IWord> _wordList;
+        public ObservableCollection<IWord> WordList
         {
             get
             {
@@ -34,7 +34,7 @@ namespace LearnThoseWords.ViewModels
         public override void Initialize()
         {
             var words = _wordFacade.GetAllWords();
-            WordList = new ObservableCollection<Word>(words);
+            WordList = new ObservableCollection<IWord>(words);
         }
     }
 }

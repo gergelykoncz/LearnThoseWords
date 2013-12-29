@@ -28,6 +28,16 @@ namespace LearnThoseWords.Pages
             addButton.Text = AppResources.WordListPageAddNew;
             addButton.Click += addButton_Click;
             ApplicationBar.Buttons.Add(addButton);
+
+            var deckButton = new ApplicationBarIconButton(new Uri("/Assets/Add.png", UriKind.Relative));
+            deckButton.Text = AppResources.WordListPageAddNew;
+            deckButton.Click += deckButton_Click;
+            ApplicationBar.Buttons.Add(deckButton);
+        }
+
+        void deckButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/WordDeckPage.xaml", UriKind.Relative));
         }
 
         private void addButton_Click(object sender, EventArgs e)
